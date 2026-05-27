@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Google Fonts fallback ── */
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@300;400;500&display=swap');
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background: #0d0408;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Font utilities ── */
+.font-display {
+  font-family: 'ZCOOL XiaoWei', serif;
+}
+
+.font-body {
+  font-family: 'Noto Serif SC', serif;
+}
+
+/* ── Prevent pull-to-refresh & overscroll ── */
+body {
+  overscroll-behavior: none;
+  touch-action: pan-y;
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(196, 104, 122, 0.35);
+  color: #fdf0e8;
+}
+
+/* ── Scrollbar hide ── */
+::-webkit-scrollbar { display: none; }
+* { scrollbar-width: none; }
+
+/* ── Photo background shimmer on load ── */
+@keyframes imgFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.photo-bg {
+  animation: imgFadeIn 0.8s ease forwards;
+}
