@@ -191,84 +191,10 @@ function MapClickHandler({ onMapClick }) {
   return null
 }
 
-// ── Intro animation overlay ──────────────────────────────────────────────────
-function IntroOverlay({ onDone }) {
-  const [stage, setStage] = useState(0)
-  useEffect(() => {
-    const t1 = setTimeout(() => setStage(1), 800)
-    const t2 = setTimeout(() => setStage(2), 2200)
-    const t3 = setTimeout(() => setStage(3), 3400)
-    const t4 = setTimeout(onDone, 4200)
-    return () => [t1,t2,t3,t4].forEach(clearTimeout)
-  }, [onDone])
-
-  return (
-    <motion.div
-      className="intro-overlay"
-      exit={{ opacity: 0, scale: 1.05 }}
-      transition={{ duration: 0.8 }}
-    >
-      {/* Globe SVG */}
-      <motion.div
-        className="intro-globe"
-        animate={stage >= 2 ? { scale: 12, opacity: 0 } : { scale: 1, opacity: 1 }}
-        transition={{ duration: 1.2, ease: [0.4,0,0.2,1] }}
-      >
-        <svg viewBox="0 0 200 200" width="220" height="220">
-          {/* Globe outline */}
-          <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5"/>
-          <circle cx="100" cy="100" r="90" fill="rgba(14,100,150,0.12)"/>
-          {/* Latitude lines */}
-          {[30,60,90,120,150].map(y => (
-            <line key={y} x1="10" y1={y} x2="190" y2={y} stroke="rgba(255,255,255,0.08)" strokeWidth="0.8"/>
-          ))}
-          {/* Longitude lines */}
-          {[40,70,100,130,160].map(x => (
-            <line key={x} x1={x} y1="10" x2={x} y2="190" stroke="rgba(255,255,255,0.08)" strokeWidth="0.8"/>
-          ))}
-          {/* Simple continent shapes */}
-          {/* Asia approximate */}
-          <path d="M110 50 Q130 45 145 55 Q160 65 155 80 Q150 95 140 100 Q125 108 115 100 Q105 92 108 75 Z" fill="rgba(100,200,120,0.3)" stroke="rgba(100,200,120,0.5)" strokeWidth="0.8"/>
-          {/* Malaysia glow dot */}
-          <motion.circle
-            cx="128" cy="90" r={stage >= 1 ? 5 : 2}
-            fill="#f780b0"
-            animate={{ r: [3, 7, 3], opacity: [0.8, 1, 0.8] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          />
-          <motion.circle cx="128" cy="90" r="12" fill="none" stroke="#f780b0" strokeWidth="0.8"
-            animate={{ r: [8, 18], opacity: [0.6, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          />
-        </svg>
-      </motion.div>
-
-      {/* Text stages */}
-      <AnimatePresence mode="wait">
-        {stage === 0 && (
-          <motion.p key="t0" className="intro-text" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-            Finding our world...
-          </motion.p>
-        )}
-        {stage === 1 && (
-          <motion.p key="t1" className="intro-text" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-            ♡ Found you in Kuala Lumpur
-          </motion.p>
-        )}
-        {stage >= 2 && (
-          <motion.p key="t2" className="intro-text" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-            Zooming in...
-          </motion.p>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  )
-}
 
 export default function MapExplorer() {
   const navigate = useNavigate()
   const { memories, addMemory, getByLocation } = useMemories()
-  const [showIntro, setShowIntro] = useState(true)
   const [selectedLoc, setSelectedLoc] = useState(null)
   const mapRef = useRef(null)
   const [charPixels, setCharPixels] = useState({})
@@ -448,12 +374,13 @@ export default function MapExplorer() {
         )}
       </AnimatePresence>
 
-      {/* Intro overlay */}
-      <AnimatePresence>
-        {showIntro && (
-          <IntroOverlay key="intro" onDone={() => setShowIntro(false)} />
-        )}
-      </AnimatePresence>
+      {/* White fade-in — continues from Landing's white flash */}
+      <motion.div
+        style={{ position: 'fixed', inset: 0, background: 'white', zIndex: 3000, pointerEvents: 'none' }}
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 0 }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+      />
     </div>
   )
 }
