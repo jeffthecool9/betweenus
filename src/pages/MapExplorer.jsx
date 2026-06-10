@@ -391,7 +391,7 @@ export default function MapExplorer() {
       <MapContainer
         center={[3.1578, 101.7123]}
         zoom={14}
-        style={{ width: '100%', height: '100%' }}
+        style={{ width: '100vw', height: '100dvh', position: 'absolute', inset: 0 }}
         zoomControl={false}
       >
         <TileLayer
