@@ -1,11 +1,14 @@
-import ParticleCanvas from './components/ParticleCanvas'
-import LoveSlider from './components/LoveSlider'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Landing from './pages/Landing'
+import MapExplorer from './pages/MapExplorer'
 
 export default function App() {
   return (
-    <div style={{ width: '100vw', height: '100dvh', overflow: 'hidden', background: '#0d0408' }}>
-      <LoveSlider />
-      <ParticleCanvas />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/map" element={<MapExplorer />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
