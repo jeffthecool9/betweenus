@@ -40,7 +40,7 @@ export default function MemoryModal({ location, memories, onAdd, onClose }) {
         {/* Header */}
         <div className="modal-header">
           <div>
-            <p className="modal-location-tag">{location.tag || '📍 Memory Spot'}</p>
+            <p className="modal-location-tag">{location.tag || '📍 记忆地点'}</p>
             <h2 className="modal-title">{location.name}</h2>
           </div>
           <button className="modal-close" onClick={onClose}>✕</button>
@@ -50,10 +50,10 @@ export default function MemoryModal({ location, memories, onAdd, onClose }) {
         {memories.length > 0 && (
           <div className="modal-tabs">
             <button className={`modal-tab ${tab === 'view' ? 'active' : ''}`} onClick={() => setTab('view')}>
-              Memories ({memories.length})
+              回忆 ({memories.length})
             </button>
             <button className={`modal-tab ${tab === 'add' ? 'active' : ''}`} onClick={() => setTab('add')}>
-              + Add New
+              + 添加新回忆
             </button>
           </div>
         )}
@@ -78,7 +78,7 @@ export default function MemoryModal({ location, memories, onAdd, onClose }) {
                 </div>
               ))}
               <button className="btn-add-first" onClick={() => setTab('add')}>
-                + Add a memory here
+                + 在这里添加回忆
               </button>
             </motion.div>
           ) : (
@@ -104,14 +104,14 @@ export default function MemoryModal({ location, memories, onAdd, onClose }) {
 
               <input
                 className="memory-input"
-                placeholder="What happened here? ♡"
+                placeholder="这里发生了什么？♡"
                 value={form.title}
                 onChange={e => setForm(f => ({ ...f, title: e.target.value }))}
               />
 
               <textarea
                 className="memory-textarea"
-                placeholder="Tell the story... (optional)"
+                placeholder="写下我们的故事… (选填)"
                 value={form.note}
                 onChange={e => setForm(f => ({ ...f, note: e.target.value }))}
                 rows={3}
@@ -130,7 +130,7 @@ export default function MemoryModal({ location, memories, onAdd, onClose }) {
                 whileTap={{ scale: 0.97 }}
                 animate={saved ? { backgroundColor: '#4ade80' } : {}}
               >
-                {saved ? '✓ Saved!' : 'Save Memory'}
+                {saved ? '✓ 已保存！' : '保存回忆'}
               </motion.button>
             </motion.div>
           )}

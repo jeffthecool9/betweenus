@@ -73,18 +73,18 @@ export default function Landing() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
       >
-        <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: 'clamp(0.8rem, 2.5vw, 1.05rem)', color: 'rgba(255,240,220,0.6)', letterSpacing: '0.18em', marginBottom: '4px' }}>
-          our little world
+        <p style={{ fontFamily: "'Noto Serif SC', serif", fontSize: 'clamp(0.8rem, 2.5vw, 1.05rem)', color: 'rgba(255,240,220,0.6)', letterSpacing: '0.22em', marginBottom: '4px' }}>
+          我们的小世界
         </p>
         <h1 style={{ fontFamily: "'Dancing Script', cursive", fontSize: 'clamp(2rem, 7vw, 3.6rem)', color: '#fff8f0', textShadow: '0 2px 24px rgba(200,140,80,0.5), 0 0 60px rgba(0,0,0,0.4)', lineHeight: 1 }}>
           Between Us
         </h1>
         <motion.p
-          style={{ fontFamily: "'Inter', sans-serif", fontSize: 'clamp(0.6rem, 1.8vw, 0.72rem)', color: 'rgba(255,240,220,0.45)', letterSpacing: '0.25em', textTransform: 'uppercase', marginTop: '8px' }}
+          style={{ fontFamily: "'Noto Serif SC', serif", fontSize: 'clamp(0.6rem, 1.8vw, 0.72rem)', color: 'rgba(255,240,220,0.45)', letterSpacing: '0.2em', marginTop: '8px' }}
           animate={{ opacity: [0.4, 0.8, 0.4] }}
           transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
         >
-          click the notebook to begin
+          点击笔记本，开始我们的故事
         </motion.p>
       </motion.div>
 
@@ -139,7 +139,7 @@ export default function Landing() {
                 pointerEvents: 'none',
               }}
             >
-              Open our notebook ♡
+              打开我们的笔记本 ♡
             </motion.div>
           )}
         </AnimatePresence>

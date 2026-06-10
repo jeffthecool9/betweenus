@@ -270,8 +270,8 @@ export default function MapExplorer() {
   const handleMapClick = (latlng) => {
     setSelectedLoc({
       id: `custom_${Date.now()}`,
-      name: 'Custom Spot',
-      tag: '📍 Your Place',
+      name: '自定义地点',
+      tag: '📍 我们的地方',
       lat: latlng.lat,
       lng: latlng.lng,
     })
@@ -293,7 +293,7 @@ export default function MapExplorer() {
     <div className="map-explorer">
       {/* Back button */}
       <button className="map-back-btn" onClick={() => navigate('/')}>
-        ← Our Notebook
+        ← 我们的笔记本
       </button>
 
       {/* Character legend */}
@@ -309,7 +309,7 @@ export default function MapExplorer() {
       {/* Memory count badge */}
       {memories.length > 0 && (
         <div className="memories-badge">
-          ♡ {memories.length} {memories.length === 1 ? 'memory' : 'memories'}
+          ♡ {memories.length} 个回忆
         </div>
       )}
 
@@ -338,7 +338,7 @@ export default function MapExplorer() {
             <Popup className="loc-popup">
               <strong>{loc.name}</strong>
               <br />
-              <small>{memCountByLoc(loc.id)} memories stored</small>
+              <small>已储存 {memCountByLoc(loc.id)} 个回忆</small>
             </Popup>
           </Marker>
         ))}
