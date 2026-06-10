@@ -32,7 +32,7 @@ export default function Landing() {
       <motion.img
         src="/images/hero-desk.jpg"
         alt="Our desk"
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center bottom' }}
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center' }}
         initial={{ scale: 1.04, opacity: 0 }}
         animate={opening
           ? { scale: 2.5, opacity: 0, filter: 'brightness(3)' }
@@ -47,7 +47,7 @@ export default function Landing() {
       {/* Top gradient for text legibility */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(180deg, rgba(20,12,8,0.72) 0%, rgba(20,12,8,0.3) 35%, transparent 55%)',
+        background: 'linear-gradient(180deg, rgba(10,6,4,0.55) 0%, rgba(10,6,4,0.18) 40%, transparent 60%)',
         pointerEvents: 'none',
       }} />
 
@@ -96,10 +96,10 @@ export default function Landing() {
         onHoverEnd={() => setHovered(false)}
         style={{
           position: 'absolute',
-          left: '28%',
-          right: '28%',
-          bottom: '8%',
-          top: '52%',
+          left: '22%',
+          right: '22%',
+          bottom: '5%',
+          top: '48%',
           cursor: opening ? 'default' : 'pointer',
           zIndex: 20,
           borderRadius: '8px',
